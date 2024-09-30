@@ -11,7 +11,7 @@ def home():
 
 @views.route("/seasons", methods=["GET"])
 def seasons_page():
-    response = requests.get("http://ergast.com/api/f1/seasons.jsofn?limit=1000")
+    response = requests.get("http://ergast.com/api/f1/seasons.json?limit=1000")
     data = response.json()
     seasons = data["MRData"]["SeasonTable"]["Seasons"]
     
