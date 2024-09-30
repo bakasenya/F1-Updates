@@ -14,3 +14,16 @@ def create_stats_table():
                     """)
     con.commit()
     con.close()
+
+def create_drivers_table():
+    con, cur = get_db_connection()
+    cur.execute("""CREATE TABLE IF NOT EXISTS drivers
+                    (driverId TEXT PRIMARY KEY,
+                    givenName TEXT,
+                    familyName TEXT,
+                    dateOfBirth TEXT,
+                    nationality TEXT,
+                    url TEXT)
+                    """)
+    con.commit()
+    con.close()

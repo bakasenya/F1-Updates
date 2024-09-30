@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Seasons</title>
+    <title>F1 Drivers</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base.html') }}">
     <style>
         body {
@@ -32,18 +32,18 @@
             color: #333;
         }
         .description {
-            text-align: center;  /* Center align the description */
+            text-align: center;
             margin: 10px 0;
             color: #555;
             font-size: 1.2em;
-            font-weight: bold;   /* Make the text bold */
+            font-weight: bold;
             text-decoration: underline;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 2px 0;
+            box-shadow: 0 20px 500px rgba(0, 0, 0, 0.1);
         }
         th, td {
             padding: 12px;
@@ -65,7 +65,7 @@
             text-decoration: underline;
         }
         .container {
-            max-width: 800px;
+            max-width: 8000px;
             margin: auto;
             background: white;
             border-radius: 5px;
@@ -81,30 +81,36 @@
         <a href="{{ url_for('views.drivers_page') }}">Drivers</a>
     </div>
     <div class="container">
-        <h1>F1 Seasons</h1>
+        <h1>F1 Drivers</h1>
         <div class="description">
-            Here you can see all the seasons of F1.
+            Here you can see all the drivers of F1.
         </div>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Year</th>
-                    <th>URL</th>
+                    <th>Given Name</th>
+                    <th>Family Name</th>
+                    <th>Date of Birth</th>
+                    <th>Nationality</th>
+                    <th>Profile URL</th>
                 </tr>
             </thead>
             <tbody>
-                {% if seasons %}
-                    {% for season in seasons %}
+                {% if drivers %}
+                    {% for driver in drivers %}
                     <tr>
-                        <td>{{ season[0] }}</td>  <!-- ID -->
-                        <td>{{ season[1] }}</td>  <!-- Year -->
-                        <td><a href="{{ season[2] }}" target="_blank">{{ season[2] }}</a></td>  <!-- URL -->
+                        <td>{{ driver.driverId }}</td>  <!-- Driver ID -->
+                        <td>{{ driver.givenName }}</td>  <!-- Given Name -->
+                        <td>{{ driver.familyName }}</td>  <!-- Family Name -->
+                        <td>{{ driver.dateOfBirth }}</td>  <!-- Date of Birth -->
+                        <td>{{ driver.nationality }}</td>  <!-- Nationality -->
+                        <td><a href="{{ driver.url }}" target="_blank">{{ driver.url }}</a></td>  <!-- Profile URL -->
                     </tr>
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="3" style="text-align:center;">No seasons available.</td>
+                        <td colspan="6" style="text-align:center;">No drivers available.</td>
                     </tr>
                 {% endif %}
             </tbody>
